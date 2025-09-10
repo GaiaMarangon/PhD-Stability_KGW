@@ -13,7 +13,6 @@ The Klein-Gordon-Wave problem reads:
      \square \, u  = (\mu^2 + 2\phi) \,u \\
    \square \, \phi  =  u ^2 
 \end{cases}\,.
-\label{eq:KGW_system}
 \end{align}
 ```
 
@@ -32,7 +31,6 @@ Consider perturbations in the harmonic form:
 \begin{align}
     \delta u (t,x)\equiv U(x) e^{i \omega t}\,, \qquad
     \delta \phi (t,x)\equiv \Phi(x) e^{i \omega t}\,,
-\label{eq:KGW_perturbationsDef}
 \end{align}
 ```
 
@@ -53,7 +51,6 @@ The linearized perturbation problem reads:
         \Phi\\
     \end{pmatrix}
     \,.
-\label{eq:KGW_linPertuVectSystem}
 \end{align}
 ```
 
@@ -81,7 +78,6 @@ The radial part of the linear perturbation problem reads:
         W\\
     \end{pmatrix}
     \,.
-\label{eq:KGW_linPertuVectSystem_radial}
 \end{align}
 ```
 
@@ -92,6 +88,5 @@ We solve it with boundary conditions appropriate for unstable modes:
         V(0) = W(0) = 0 \\
         V(\infty) = W(\infty) = 0
     \end{cases}
-\label{eq:KGW_linPertuVectSystem_BCs}
 \end{align}
 ```
