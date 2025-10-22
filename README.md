@@ -1,9 +1,9 @@
 # Read me
 
-This folder contains an implementation of the radial linearized perturbation problem for the Klein-Gordon-Wave system. It includes the following files:
-1. `main_spectralSolver` 
-2. `main_spectralElaborate_nFixed`
-2. `main_spectralElaborate_nVary`
+This folder contains a `MATLAB` implementation of the radial linearized perturbation problem for the Klein-Gordon-Wave system. It includes the following `.m` files:
+1. `main_spectralSolver`, solving the spectral problem 
+2. `main_spectralElaborate_nFixed` performing some analysis at fixed $n$ (excitation index of the eigenstate serving as a background for the perturbations)
+2. `main_spectralElaborate_nVary` performing some analysis across different values of $n$ (excitation index of the eigenstate serving as a background for the perturbations)
 
 ## Problem
 The Klein-Gordon-Wave problem reads:
@@ -90,3 +90,35 @@ We solve it with boundary conditions appropriate for unstable modes:
     \end{cases}
 \end{align}
 ```
+
+##  The `main_spectralSolver` file
+This file solves the spectral problem (4) with BCs (5) for perturbations around the $n$-th eigenstate (called background). 
+
+The problem is solved for different refinements of the radial domain ($N$ is the number of discretization points in the domain), and the results are saved to `.mat` files.  
+Each result file refers to a single background excitation index $n$ and includes the results for different numbers $N$ of discretization points.
+When the code is executed, for each $N$ it first checks the result file, and the problem is solved only for new combination $(n,N)$.
+
+The solving procedure consist in defining a uniform discretization of the domain, computing the spectral matrix accordingly and applying the boundary conditions (Dirichlet BCS are handled by removing first and last rows/columns of each block). Then, the discretized problem is solved with the `eig` built-in function, and results are sorted by growing eigenvalues. Spurious modes are optionally filtered (excluding largest eigenvalues) and the eigenvectors are normalized ($L^2$-normalization), taking care of the BCs (inserting missing first/last zero components). Finally, some analysis is performed on stability results: eigenvalues are classified as stable (positive), unstable (negative) or zero (vanishing, within a given tolerance), and the index and total number of each class of eigenvalues (stable, unstable, zero) is saved. 
+
+
+
+## The `main_spectralElaborate_nFixed` file
+
+This file performs some analysis of the results for fixed background excitation index $n$. 
+
+The spectrum of the radial linear perturbation problem includes $n+1$ negative eigenvalues $\{\omega_k^2\}_{k=0}^n$ for each $n$-th background stationary solution, conventionally sorted in descending order.
+The analysis includes the following plots:
+- plot of the eigenvalues $\omega_k^2$ against their index $k$;
+- plot of the spectrum for different values of $N$; 
+- plot of the relative differences of the eigenvalues across different values of $N$: $\Delta_k (N_j) = \frac{\omega_k^2(N_j)-\omega_k^2(N_{j-1})}{\omega_k^2(N_0)}$;
+- plot of the eigenmodes $V(r)$. They are optionally compared to the corresponding eigenfunctions $f_n(r)$ of the original stationary Klein-Gordon-Wave problem having the same number of nodes.
+- plot of the eigenmodes $W(r)$. 
+
+Additionally, the stability results are printed to file.
+
+## The `main_spectralElaborate_nVary` file
+
+This file performs some analysis of the results for fixed background excitation index $n$.
+
+It includes the following plots:
+- plot of the eigenvalues $\omega_k^2$ against their index $k$, across different values of $n$.
