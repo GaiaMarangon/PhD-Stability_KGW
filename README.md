@@ -106,7 +106,7 @@ The solving procedure consist in defining a uniform discretization of the domain
 
 This file performs some analysis of the results for fixed background excitation index $n$. 
 
-The spectrum of the radial linear perturbation problem includes $n+1$ negative eigenvalues $\{\omega_k^2\}_{k=0}^n$ for each $n$-th background stationary solution, conventionally sorted in descending order.
+The spectrum of the radial linear perturbation problem includes $n+1$ negative eigenvalues $\\{\omega_k^2\\}_{k=0}^n$ for each $n$-th background stationary solution, conventionally sorted in descending order.
 The analysis includes the following plots:
 - plot of the eigenvalues $\omega_k^2$ against their index $k$;
 - plot of the spectrum for different values of $N$; 
